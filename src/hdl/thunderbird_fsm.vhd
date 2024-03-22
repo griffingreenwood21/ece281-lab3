@@ -128,7 +128,7 @@ begin
     begin
             --Reset state is OFF
             if i_reset = '1' then
-                 f_Q(7) <= '1';
+                 f_Q <= "10000000";
             elsif (rising_edge(i_clk)) then
                  f_Q <= f_Q_next;
             end if;

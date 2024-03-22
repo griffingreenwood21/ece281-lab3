@@ -95,7 +95,7 @@ entity thunderbird_fsm is
   end thunderbird_fsm;
 
 architecture thunderbird_fsm_arch of thunderbird_fsm is 
-	-- create register signals with default state yellow (10)
+	-- create register signals with default state OFF (f_Q(7) = 1)
 	signal f_Q : std_logic_vector (7 downto 0) := "10000000";
 	signal f_Q_next : std_logic_vector (7 downto 0) := "10000000";
   
@@ -126,7 +126,7 @@ begin
     -- state memory w/ asynchronous reset ---------------
     register_proc : process (i_clk, i_reset)
     begin
-            --Reset state is OFF
+            --Reset state is OFF (f_Q(7) = 1)
             if i_reset = '1' then
                  f_Q <= "10000000";
             elsif (rising_edge(i_clk)) then

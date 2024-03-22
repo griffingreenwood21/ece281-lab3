@@ -168,7 +168,7 @@ begin
            wait for k_clk_period;
            --after two clk cycles, R2 should be on
                assert w_lights_R = "011" report "bad R2" severity error;
-           --test reset
+           --test reset asynchronously resets state to f_Q(7)
            w_reset <= '1';
            wait for k_clk_period;
                assert w_lights_L = "000" report "bad reset" severity error;

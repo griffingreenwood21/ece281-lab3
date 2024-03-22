@@ -29,7 +29,7 @@ If any of the `assert` statements fail **with** `severity error` then GHDL will 
 
 
 ## Waveform
-![Waveform from thunderbird_fsm_tb](myimage.png)
+![Waveform from thunderbird_fsm_tb](Waveform.png)
 
 ## Top Basys Diagram
 https://excalidraw.com/#json=SrLmqD8iZA2ACI-8lRXtC,4giMDJSZNutJSnBVMwoE9w

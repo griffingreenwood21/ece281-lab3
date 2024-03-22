@@ -36,3 +36,6 @@ https://excalidraw.com/#json=SrLmqD8iZA2ACI-8lRXtC,4giMDJSZNutJSnBVMwoE9w
 
 ## RTL Schematic
 ![RTL Schematic from topbasys3](RTLSchematic.png)
+
+## Documentation
+My partner on this lab was C3C Sampson McClung. We worked together to check our one-hot encoding tables. I worked with him to change my code from binary encoding to one hot encoding. Otherwise, this work is entirely my own.

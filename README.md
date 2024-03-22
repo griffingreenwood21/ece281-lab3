@@ -29,4 +29,4 @@ If any of the `assert` statements fail **with** `severity error` then GHDL will 
 
 
 ## Waveform
-![Waveform from thunderbird_fsm_tb](Screenshot 2024-03-21 220314.png)
+![Waveform from thunderbird_fsm_tb]("Screenshot 2024-03-21 220314.png")

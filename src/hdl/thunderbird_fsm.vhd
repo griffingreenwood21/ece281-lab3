@@ -96,38 +96,39 @@ entity thunderbird_fsm is
 
 architecture thunderbird_fsm_arch of thunderbird_fsm is 
 	-- create register signals with default state yellow (10)
-	signal f_Q : std_logic_vector (7 downto 0) := "10";
-	signal f_Q_next : std_logic_vector (7 downto 0) := "10";
+	signal f_Q : std_logic_vector (7 downto 0) := "10000000";
+	signal f_Q_next : std_logic_vector (7 downto 0) := "10000000";
   
 begin
 
 	-- CONCURRENT STATEMENTS ----------------------------
 	-- Next state logic
-	f_Q_next(7) <= (f_Q(7) and not i_left and not i_right) or f_Q(6) or f_Q(3) or f_Q(0);
-	f_Q_next(6) <= f_Q(7) and i_left and i_right;
-	f_Q_next(5) <= f_Q(7) and not i_left and i_right;
-	f_Q_next(4) <= f_Q(5);
-	f_Q_next(3) <= f_Q(4);
-	f_Q_next(2) <= f_Q(7) and i_left and not i_right;
-	f_Q_next(1) <= f_Q(2);
 	f_Q_next(0) <= f_Q(1);
+	f_Q_next(1) <= f_Q(2);
+	f_Q_next(2) <= f_Q(7) and i_left and not i_right;
+	f_Q_next(3) <= f_Q(4);
+	f_Q_next(4) <= f_Q(5);
+	f_Q_next(5) <= f_Q(7) and not i_left and i_right;
+	f_Q_next(6) <= f_Q(7) and i_left and i_right;
+	f_Q_next(7) <= (f_Q(7) and not i_left and not i_right) or f_Q(6) or f_Q(3) or f_Q(0);
 	
 	-- Output logic
-    o_lights_L(2) <= f_Q(6) or f_Q(0);
-    o_lights_L(1) <= f_Q(6) or f_Q(1) or f_Q(0);
-    o_lights_L(0) <= f_Q(6) or f_Q(2) or f_Q(1) or f_Q(0);
-    o_lights_R(2) <= f_Q(6) or f_Q(3);
-    o_lights_R(1) <= f_Q(6) or f_Q(4) or f_Q(3);
-    o_lights_R(0) <= f_Q(6) or f_Q(5) or f_Q(4) or f_Q(3);
+	o_lights_L(2) <= f_Q(6) or f_Q(0);
+	o_lights_L(1) <= f_Q(6) or f_Q(1) or f_Q(0);
+	o_lights_L(0) <= f_Q(6) or f_Q(2) or f_Q(1) or f_Q(0);
+	
+	o_lights_R(2) <= f_Q(6) or f_Q(3);
+	o_lights_R(1) <= f_Q(6) or f_Q(4) or f_Q(3);
+	o_lights_R(0) <= f_Q(6) or f_Q(5) or f_Q(4) or f_Q(3);
 	-------------------------------------------------------	
 	
 	-- PROCESSES ----------------------------------------	
     -- state memory w/ asynchronous reset ---------------
     register_proc : process (i_clk, i_reset)
     begin
-            --Reset state is yellow
+            --Reset state is OFF
             if i_reset = '1' then
-                 f_Q <= "10";
+                 f_Q(7) <= '1';
             elsif (rising_edge(i_clk)) then
                  f_Q <= f_Q_next;
             end if;

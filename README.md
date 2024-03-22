@@ -33,3 +33,6 @@ If any of the `assert` statements fail **with** `severity error` then GHDL will 
 
 ## Top Basys Diagram
 https://excalidraw.com/#json=SrLmqD8iZA2ACI-8lRXtC,4giMDJSZNutJSnBVMwoE9w
+
+## RTL Schematic
+![RTL Schematic from topbasys3](RTLSchematic.png)

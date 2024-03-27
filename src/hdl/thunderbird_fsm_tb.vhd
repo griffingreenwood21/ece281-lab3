@@ -103,8 +103,15 @@ begin
 	
 	-- Test Plan Process --------------------------------
 	sim_proc: process
-	begin	      
+	begin	   
+	       --begin with a reset state
+	       w_reset <= '1';
+               wait for k_clk_period;
+                   assert w_lights_L = "000" report "bad reset" severity failure;
+                   assert w_lights_R = "000" report "bad reset" severity failure;
+                      
 	       --test off with no turn signal
+	       w_reset <= '0';
 	       w_left <= '0'; w_right <= '0';
 	       wait for k_clk_period*1;
 	           assert w_lights_L = "000" report "bad OFF" severity failure;
